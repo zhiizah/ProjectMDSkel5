@@ -23,12 +23,10 @@
 - [Screenshot](#rice_scene-screenshot) 📸
 - [Demo](#dvd-demo) 🎬
 - [Dokumentasi](#blue_book-dokumentasi) 📚
-- [Requirements](#exclamation-requirements) ❗
-- [Skema Database](#floppy_disk-skema-database) 💾
 - [ERD](#rotating_light-erd) 📈
 - [Deskripsi Data](#heavy_check_mark-deskripsi-data) 📋
 - [Struktur Folder](#open_file_folder-struktur-folder) 📁
-- [Tim Pengembang](#smiley_cat-tim-pengembang) 👨‍💻
+- [Our Team](#smiley_cat-tim-pengembang) 👨‍💻
 
  ## 📖 **Tentang**  
 
@@ -66,7 +64,7 @@ Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kab
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
 </p>
 
-Halaman ketiga terkait dengan statistik wisata yang menampilkan tren dari wisata Jawa Barat. 
+Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. 
 
 ## 🎬 Demo
 
@@ -74,8 +72,8 @@ Berikut merupakan link untuk shinnyapps atau dashboard dari project kami:
 https://mdselompok6.shinyapps.io/Dashbordmds6/
 
 ## 💾 ERD
+Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan atribut. Pada project ini, pada entitas Wisata terdapat 3 atribut yang berhubungan dengan entitas lain yaitu kode_kabkot yang memiliki hubungan ke entitas Kota, kode_kec berhubungan dengan entitas Kecamatan, Kodel_kel memiliki hubungan dengan entitas Kelurahan dengan masing-masing hubungan One-to-Many. 
 
-Menggambarkan struktur *primary key* **kode_kabkot**, **kode_kec**, **kode_kel** dan **kode_wisata** dengan masing-masing *foreign key* dalam membangun relasi antara tabel atau entitas.
 <p align="center">
   <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
 </p>
@@ -86,9 +84,7 @@ Berisi tentang tabel-tabel yang digunakan berikut dengan sintaks SQL DDL (CREATE
 
 ### Create Database
 "Pesona Jabar" menyimpan informasi yang mewakili atribut data yang saling berhubungan untuk kemudian dianalisis.
-```sql
 
-```
 ### Create Table Kabupaten Kota
 Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
 | Attribute          | Type                   | Description                     |
@@ -100,14 +96,77 @@ Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota
 
 dengan script SQL sebagai berikut:
 ```sql
-CREATE TABLE IF NOT EXISTS penerbit (
-    id_penerbit VARCHAR(10) PRIMARY KEY,
-    nama_penerbit VARCHAR(100) NOT NULL,
-    tempat_penerbit VARCHAR(100)
+CREATE TABLE IF NOT EXISTS Kota (
+    Kode_Kabkot VARCHAR(10) PRIMARY KEY,
+    Nama_Kabkot VARCHAR(100) NOT NULL,
+    Ibukota VARCHAR(100),
+    Jml_pddk_kabkot int (20)
 );
-select * from penerbit
+select * from Kota
 ```
 
+### Create Table Kecamatan
+
+Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+| Attribute          | Type                   | Description                     |
+|:-------------------|:-----------------------|:--------------------------------|
+| kode_Kec           | character varying(10)  | Kode Kecamatan                  |
+| Kode_Kabkot        | character varying(10)  | Kode Kabupaten / Kota           |
+| Nama_Kec           | character varying(100) | Nama Kecamatan                  |
+| Jml_pddk_kec       | character varying(100) | Jumlah penduduk                 |
+
+dengan script SQL sebagai berikut:
+```sql
+CREATE TABLE IF NOT EXISTS Kecamatan (
+    Kode_Kec VARCHAR(10) PRIMARY KEY,
+    Kode_Kabkot VARCHAR(100) NOT NULL,
+    Nama_Kec VARCHAR(100),
+    Jml_pddk_kec int (20)
+);
+select * from Kecamatan
+```
+### Create Table Kelurahan
+
+Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+| Attribute          | Type                   | Description                     |
+|:-------------------|:-----------------------|:--------------------------------|
+| kode_Kel           | character varying(10)  | Kode Kelurahan                  |
+| Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
+| Nama_Kel           | character varying(100) | Nama Kelurahan                  |
+| Jml_pddk_kel       | character varying(100) | Jumlah penduduk                 |
+
+dengan script SQL sebagai berikut:
+```sql
+CREATE TABLE IF NOT EXISTS Kelurahan (
+    Kode_Kel VARCHAR(10) PRIMARY KEY,
+    Kode_Kec VARCHAR(100) NOT NULL,
+    Nama_Kel VARCHAR(100),
+    Jml_pddk_kelc int (20)
+);
+select * from Kelurahan
+```
+### Create Table Wisata
+
+## 📁 Struktur Folder
+
+```
+.
+├── app           # ShinyApps
+│   ├── css
+│   │   ├── **/*.css
+│   ├── server.R
+│   └── ui.R
+├── data 
+│   ├── csv
+│   │   ├── **/*.css
+│   └── sql
+|       └── db.sql
+├── src           # Project source code
+├── doc           # Doc for the project
+├── .gitignore
+├── LICENSE
+└── README.md
+```
 
 
 ## 👨‍💻 Tim Pengembang
