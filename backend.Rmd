@@ -1,0 +1,392 @@
+```{r}
+# Load Library
+library(shiny)
+library(shinydashboard)
+library(DT)
+library(DBI)
+library(RMySQL)
+library(dplyr)
+library(plotly)
+library(shinyjs)
+
+# Fungsi untuk mengambil pilihan dari database MySQL
+getChoices <- function(query) {
+  con <- dbConnect(MySQL(),
+                   host = "127.0.0.1",
+                   port = 3306,
+                   user = "root",
+                   password = "",
+                   dbname = "pariwisata_db")
+
+  data <- dbGetQuery(con, query)
+  dbDisconnect(con)
+
+  if (nrow(data) == 0) {
+    return(NULL)  
+  }
+  return(data[[1]])  
+}
+
+# UI Dashboard
+ui <- dashboardPage(
+    dashboardHeader(title = span(
+      img(src = "https://raw.githubusercontent.com/nabilasyukrii/Dataset/refs/heads/main/69992fc8-8a7d-408a-abf6-66340a046240.jpg",
+          style = "height:45px; width:auto; vertical-align:middle; padding-right: 15px;"),
+      "Pesona Jabar", 
+      style = "color: white; vertical-align:middle; font-size: 15px; padding-left: 5px; font-weight: bold;"
+)
+),
+  # Sidebar Menu
+
+  dashboardSidebar(
+    sidebarMenu(id = "sidebarMenu",
+      menuItem("Dashboard", tabName = "home", icon = icon("home"), selected = TRUE),
+      menuItem("Cari Wisata", tabName = "searchWisata", icon = icon("search")),
+      menuItem("Statistik Wisata", tabName = "statsWisata", icon = icon("chart-bar"))
+    )
+  ),
+
+  # Body dengan dua halaman (Dashboard & Cari Wisata)
+  dashboardBody(
+  useShinyjs(),  # Tambahkan ini di sini
+ tags$head(
+  tags$style(HTML("
+    body { background-color: #f0f0f0 !important; } /* Background utama */
+    .main-header .logo { background-color: #000080 !important; } /* Header */
+  "))
+),
+    tabItems(
+       # Halaman Dashboard
+      tabItem(tabName = "home",
+      fluidRow(
+        box(
+          width = 12, solidHeader = TRUE, status = "primary",
+          div(class = "welcome-box text-center",
+              h2("Selamat Datang di Dashboard Wisata Provinsi Jawa Barat",
+                 style = "font-size: 36px; font-weight: bold; color: #007bff;"),
+              img(src = "https://github.com/zhiizah/ProjectMDSkel5/blob/designerDB/Images/Black%20Simple%20Beautiful%20Nature%20Email%20Header.png?raw=true", 
+                  height = "400")
+          )
+        )
+      ),
+
+      # FluidRow kedua: Tentang
+    fluidRow(
+  box(
+    title = "Tentang", status = "info", solidHeader = TRUE, width = 12,
+    p("Halaman ini menampilkan informasi lengkap mengenai rekomendasi destinasi wisata terbaik di Jawa Barat. 
+       Pada Halaman ini Anda diberikan 4 rekomendasi wisata berdasarkan rating tertinggi dari berbagai wisata yang ada di Provinsi Jawa Barat.", 
+      style = "font-size: 18px; text-align: justify;"),
+    p(HTML("Untuk mencari dan memilih wisata apa saja yang ada di Provinsi Jawa Barat anda bisa mencari di menu 
+       <a id='goToCariWisata' href='#'>Cari Wisata</a> dengan memilih daerah dan jenis wisata yang ingin anda kunjungi. 
+       Silakan pilih destinasi terbaik bagi Anda dan keluarga!"), 
+      style = "font-size: 18px; text-align: justify;")
+  )
+),
+
+
+
+      # FluidRow ketiga: Top 4 Destinasi Wisata
+      fluidRow(
+        box(
+          title = "Top 4 Destinasi Wisata (Based on Rating)", status = "info", solidHeader = TRUE, collapsible = TRUE, width = 12,
+          div(class = "container-fluid", uiOutput("top_wisata"))
+        )
+      )
+    ),
+
+      # Halaman Cari Wisata
+      tabItem(tabName = "searchWisata",
+              fluidRow(
+                box(title = "Filter Pencarian", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
+                    selectInput("namaKabkotInput", "Pilih Kabupaten/Kota", 
+                                choices = getChoices("SELECT DISTINCT Nama_Kabkot FROM kabupaten ORDER BY Nama_Kabkot")),
+                    selectInput("tipeWisataInput", "Pilih Tipe Wisata", choices = NULL),
+                    actionButton("searchButton", "Cari", icon = icon("search"))
+                )
+              ),
+              fluidRow(
+                box(title = "Hasil Pencarian", status = "success", solidHeader = TRUE, width = 12, 
+                    DTOutput("searchResultsTable")
+                )
+              )
+      ),
+
+# Halaman Statistik Wisata
+tabItem(tabName = "statsWisata",
+  fluidRow(
+    column(4, 
+      box(title = "Jumlah Kab/Kota di Provinsi Jawa Barat", 
+          status = "info", solidHeader = TRUE, width = NULL, 
+          background = "blue",  
+          uiOutput("total_kabupaten"))
+    ),
+    column(4, 
+      box(title = "Jumlah Kab/Kota yang memiliki Wisata", 
+          status = "info", solidHeader = TRUE, width = NULL, 
+          background = "blue",  
+          uiOutput("kabkot_wisata"))
+    ),
+    column(4, 
+      box(title = "Total Wisata", 
+          status = "info", solidHeader = TRUE, width = NULL, 
+          background = "blue",  
+          uiOutput("total_wisata"))
+    )
+  ),
+  fluidRow(
+    column(6, 
+      box(title = "Jumlah Wisata per Kab./Kota", width = 12, 
+          status = "info", solidHeader = TRUE, plotlyOutput("plotWisata"))
+    ),
+    column(6, 
+      box(title = "Proporsi Wisata Gratis vs. Berbayar", width = 12, 
+          status = "info", solidHeader = TRUE, plotlyOutput("plotPieTiket"))
+    )
+  ),
+  fluidRow(
+    box(title = "Jumlah Wisata Gratis vs. Berbayar per Kab./Kota", width = 12, 
+        status = "warning", solidHeader = TRUE, plotlyOutput("plotStackedBar"))
+  )
+)
+)))
+
+
+# SERVER
+server <- function(input, output, session) {
+   observe({
+    shinyjs::onclick("goToCariWisata", {
+      updateTabItems(session, "sidebarMenu", selected = "searchWisata")
+    })
+  })
+# Render UI untuk daftar wisata terbaik
+  output$top_wisata <- renderUI({
+    wisata <- data.frame(
+      nama_wisata = c("Balon Udara", "Taman Safari Indonesia", "Wana Wisata Puncak Sempur", "Situ Mustika"),
+      Nama_Kabkot = c("Kab. Subang", "Kab. Bogor", "Kab. Karawang", "Kota Banjar"),
+      rating = c(5, 4.9, 4.8, 4.7),
+      image = c(
+        "https://akcdn.detik.net.id/community/media/visual/2022/03/12/wisata-naik-balon-udara-di-sari-ater-subang-8_43.jpeg?w=700&q=90", 
+        "https://edensorhills.com/wp-content/uploads/2022/12/Taman-Safari-Indonesia-Bogor-1024x576.jpg", 
+        "https://sebandung.com/wp-content/uploads/2024/08/Wana-Wisata-Puncak-Sempur-Karawang-700x420.png",
+        "https://www.tabloidpamor.com/foto_berita/40cncncjxjdkxkcncncn.JPG"
+      )
+    )
+ wisata_panels <- lapply(1:nrow(wisata), function(i) {
+      column(3, class = "wisata-panel",
+             tags$img(src = wisata$image[i], height = "100px"),
+             tags$p(strong(wisata$nama_wisata[i]), 
+                    tags$br(), 
+                    "Kab/Kota: ", wisata$Nama_Kabkot[i], 
+                    tags$br(), 
+                    "Rating: ", wisata$rating[i])
+      )
+    })
+    
+    do.call(fluidRow, wisata_panels)
+  })
+  
+  # Perbarui pilihan Tipe_Wisata berdasarkan Nama_Kabkot yang dipilih
+  observeEvent(input$namaKabkotInput, {
+    if (input$namaKabkotInput != "") {
+      query <- sprintf(
+        "SELECT DISTINCT wisata.Tipe_Wisata 
+         FROM wisata 
+         JOIN kabupaten ON wisata.Kode_Kabkot = kabupaten.Kode_Kabkot
+         WHERE kabupaten.Nama_Kabkot = '%s'", input$namaKabkotInput
+      )
+      related_data <- getChoices(query)
+      
+      updateSelectInput(session, "tipeWisataInput", choices = c("", related_data))
+    } else {
+      updateSelectInput(session, "tipeWisataInput", choices = NULL)
+    }
+  })
+
+  # Ketika tombol cari diklik, tampilkan hasil pencarian
+observeEvent(input$searchButton, {
+  withProgress(message = 'Mohon tunggu...', value = 0, {
+    setProgress(value = 0.5, message = "Sedang memuat data...")
+    
+    
+
+    query <- sprintf(
+      "SELECT wisata.nama_wisata AS 'Nama Wisata', 
+              wisata.Rating AS 'Rating', 
+              wisata.Harga_Tiket AS 'Harga Tiket', 
+              CONCAT('<a href=\"', TRIM(wisata.Alamat), '\" target=\"_blank\">Lihat di Maps</a>') AS 'Alamat',
+              wisata.Deskripsi AS 'Deskripsi'
+       FROM wisata 
+       JOIN kabupaten ON wisata.Kode_Kabkot = kabupaten.Kode_Kabkot
+       WHERE kabupaten.Nama_Kabkot = '%s' 
+         AND wisata.Tipe_Wisata = '%s'",
+      input$namaKabkotInput, input$tipeWisataInput
+    )
+
+    con <- dbConnect(MySQL(),
+                     host = "127.0.0.1",
+                     port = 3306,
+                     user = "root",
+                     password = "",
+                     dbname = "pariwisata_db")
+
+    hasil_query <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    # Jika hasil kosong, tampilkan pesan default
+    if (nrow(hasil_query) == 0) {
+      hasil_query <- data.frame("Pesan" = "Tidak ada data ditemukan")
+    }
+
+    output$searchResultsTable <- renderDT({
+      datatable(hasil_query, escape = FALSE, options = list(autoWidth = TRUE, pageLength = 10))
+    })
+
+    setProgress(value = 1, message = "Selesai!")  
+  })  
+})
+
+
+# Statistik jumlah wisata per kabupaten/kota
+output$plotWisata <- renderPlotly({
+  query <- "SELECT kabupaten.Nama_Kabkot, COUNT(wisata.Kode_wisata) AS jumlah_wisata 
+            FROM wisata 
+            JOIN kabupaten ON wisata.Kode_Kabkot = kabupaten.Kode_Kabkot 
+            GROUP BY kabupaten.Nama_Kabkot
+            ORDER BY jumlah_wisata DESC"  # Urutkan dari terbesar ke terkecil di SQL
+
+  con <- dbConnect(MySQL(),
+                   host = "127.0.0.1",
+                   port = 3306,
+                   user = "root",
+                   password = "",
+                   dbname = "pariwisata_db")
+
+  wisata_data <- dbGetQuery(con, query)
+  dbDisconnect(con)
+
+  # Pastikan faktor Nama_Kabkot diurutkan berdasarkan jumlah_wisata
+  wisata_data <- wisata_data %>%
+    mutate(Nama_Kabkot = factor(Nama_Kabkot, levels = wisata_data$Nama_Kabkot))
+
+  # Buat plot dengan angka di atas batang
+  plot_ly(wisata_data, 
+          x = ~Nama_Kabkot, 
+          y = ~jumlah_wisata, 
+          type = 'bar', 
+          name = "Jumlah Wisata", 
+          text = ~jumlah_wisata,  # Menampilkan angka di atas batang
+          textposition = 'outside',
+          marker = list(color = 'blue')) %>%  # Set warna manual
+    layout(title = "",
+           xaxis = list(title = "Kab./Kota", categoryorder = "array", categoryarray = wisata_data$Nama_Kabkot),
+           yaxis = list(title = "Jumlah Wisata"))
+})
+
+# Diagram Lingkaran: Proporsi Wisata Gratis vs. Berbayar
+  output$plotPieTiket <- renderPlotly({
+    query <- "SELECT 
+                SUM(CASE WHEN wisata.Harga_Tiket = 'Gratis' THEN 1 ELSE 0 END) AS Gratis,
+                SUM(CASE WHEN wisata.Harga_Tiket <> 'Gratis' THEN 1 ELSE 0 END) AS Berbayar
+              FROM wisata"
+
+    con <- dbConnect(MySQL(),
+                     host = "127.0.0.1",
+                     port = 3306,
+                     user = "root",
+                     password = "",
+                     dbname = "pariwisata_db")
+
+    tiket_data <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    df_tiket <- data.frame(
+      Kategori = c("Gratis", "Berbayar"),
+      Jumlah = c(tiket_data$Gratis, tiket_data$Berbayar)
+    )
+
+   plot_ly(df_tiket, labels = ~Kategori, values = ~Jumlah, type = 'pie', 
+        textinfo = 'label+percent', insidetextorientation = 'radial',
+        marker = list(colors = c('lightblue', 'blue'))) %>%
+  layout(title = "")
+  })
+  
+  # Diagram Batang Bertumpuk: Proporsi Wisata Gratis vs. Berbayar per Kabupaten/Kota
+  output$plotStackedBar <- renderPlotly({
+    query <- "SELECT 
+                kabupaten.Nama_Kabkot,
+                SUM(CASE WHEN wisata.Harga_Tiket = 'Gratis' THEN 1 ELSE 0 END) AS Gratis,
+                SUM(CASE WHEN wisata.Harga_Tiket <> 'Gratis' THEN 1 ELSE 0 END) AS Berbayar
+              FROM wisata
+              JOIN kabupaten ON wisata.Kode_Kabkot = kabupaten.Kode_Kabkot
+              GROUP BY kabupaten.Nama_Kabkot
+              ORDER BY (Gratis + Berbayar) DESC"
+
+    con <- dbConnect(MySQL(),
+                     host = "127.0.0.1",
+                     port = 3306,
+                     user = "root",
+                     password = "",
+                     dbname = "pariwisata_db")
+
+    wisata_tiket <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    wisata_tiket <- wisata_tiket %>%
+      mutate(Nama_Kabkot = factor(Nama_Kabkot, levels = wisata_tiket$Nama_Kabkot))
+
+plot_ly(wisata_tiket, x = ~Nama_Kabkot, y = ~Gratis, type = 'bar', 
+        name = 'Gratis', marker = list(color = 'lightblue'),
+        text = ~Gratis, textposition = 'inside') %>%
+  add_trace(y = ~Berbayar, name = 'Berbayar', marker = list(color = 'blue'),
+            text = ~Berbayar, textposition = 'inside') %>%
+  layout(title = "",
+         barmode = 'stack',
+         xaxis = list(title = "Kab./Kota", 
+                      categoryorder = "array", 
+                      categoryarray = wisata_tiket$Nama_Kabkot),
+         yaxis = list(title = "Jumlah Wisata"),
+         legend = list(x = 0.8, y = 1))
+  })
+  
+# Hitung jumlah kabupaten
+  output$total_kabupaten <- renderUI({
+    query <- "SELECT COUNT(DISTINCT Nama_Kabkot) AS total FROM kabupaten"
+    con <- dbConnect(MySQL(), host = "127.0.0.1", port = 3306, user = "root", password = "", dbname = "pariwisata_db")
+    result <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    total_value <- ifelse(nrow(result) == 0, "Data tidak tersedia", as.character(result$total))
+
+    div(style = "text-align: center; font-size: 24px; font-weight: bold; color: white;", total_value)
+  })
+
+  # Hitung jumlah kabupaten/kota yang memiliki wisata
+  output$kabkot_wisata <- renderUI({
+    query <- "SELECT COUNT(DISTINCT wisata.Kode_Kabkot) AS total FROM wisata"
+    con <- dbConnect(MySQL(), host = "127.0.0.1", port = 3306, user = "root", password = "", dbname = "pariwisata_db")
+    result <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    total_value <- ifelse(nrow(result) == 0, "Data tidak tersedia", as.character(result$total))
+
+    div(style = "text-align: center; font-size: 24px; font-weight: bold; color: white;", total_value)
+  })
+
+  # Hitung total jumlah wisata
+  output$total_wisata <- renderUI({
+    query <- "SELECT COUNT(*) AS total FROM wisata"
+    con <- dbConnect(MySQL(), host = "127.0.0.1", port = 3306, user = "root", password = "", dbname = "pariwisata_db")
+    result <- dbGetQuery(con, query)
+    dbDisconnect(con)
+
+    total_value <- ifelse(nrow(result) == 0, "Data tidak tersedia", as.character(result$total))
+
+    div(style = "text-align: center; font-size: 24px; font-weight: bold; color: white;", total_value)
+  })
+}
+
+# Jalankan aplikasi
+shinyApp(ui, server)
+```
+
