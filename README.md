@@ -73,6 +73,41 @@ Halaman ketiga terkait dengan statistik wisata yang menampilkan tren dari wisata
 Berikut merupakan link untuk shinnyapps atau dashboard dari project kami:
 https://mdselompok6.shinyapps.io/Dashbordmds6/
 
+## 💾 ERD
+
+Menggambarkan struktur *primary key* **kode_kabkot**, **kode_kec**, **kode_kel** dan **kode_wisata** dengan masing-masing *foreign key* dalam membangun relasi antara tabel atau entitas.
+<p align="center">
+  <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
+</p>
+
+## 📋 Deskripsi Data
+
+Berisi tentang tabel-tabel yang digunakan berikut dengan sintaks SQL DDL (CREATE).
+
+### Create Database
+"Pesona Jabar" menyimpan informasi yang mewakili atribut data yang saling berhubungan untuk kemudian dianalisis.
+```sql
+
+```
+### Create Table Kabupaten Kota
+Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+| Attribute          | Type                   | Description                     |
+|:-------------------|:-----------------------|:--------------------------------|
+| kode_Kabkot        | character varying(10)  | Kode Kabupaten / kota           |
+| nama_Kabkot        | character varying(100) | Nama Kabupaten / Kota           |
+| Ibukota            | character varying(100) | Ibu Kota                        |
+| Jml_pddk_kabkot    | character varying(100) | Jumlah penduduk                 |
+
+dengan script SQL sebagai berikut:
+```sql
+CREATE TABLE IF NOT EXISTS penerbit (
+    id_penerbit VARCHAR(10) PRIMARY KEY,
+    nama_penerbit VARCHAR(100) NOT NULL,
+    tempat_penerbit VARCHAR(100)
+);
+select * from penerbit
+```
+
 
 
 ## 👨‍💻 Tim Pengembang
