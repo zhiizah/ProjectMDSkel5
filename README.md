@@ -32,11 +32,22 @@
 
  ## 📖 Tentang
  Dashboard "Pesona" dibuat untuk mendapatkan informasi wisata yang ada di Jawa Barat dengan 
+ 🎯 Fitur Utama
+✅ Cari Wisata – Filter dan temukan destinasi wisata berdasarkan kabupaten, kecamatan, tipe wisata, harga tiket, dan rating.
+✅ Statistik Wisata – Lihat data dan analisis seputar tren wisata di Jawa Barat.
+✅ Rekomendasi Terbaik – Dapatkan rekomendasi wisata dengan rating tertinggi yang wajib dikunjungi.
+
+
+🚀 Cara Menggunakan
+1️⃣ Buka halaman Dashboard untuk melihat rekomendasi wisata terbaik.
+2️⃣ Klik menu Cari Wisata untuk mencari tempat yang sesuai dengan preferensimu.
+3️⃣ Jelajahi Statistik Wisata untuk memahami tren wisata di Jawa Barat.
+4️⃣ Nikmati perjalananmu dan bagikan pengalaman terbaikmu! 🌟
 
  ## :📸 Screenshot
 
 <p align="center">
-  <img width="900" height="420" src="https://github.com/smutiah48/Project_MDS6/blob/main/scr/Tampilan%20awal.png">
+  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
 </p>
 
 ## 🎬 Demo
