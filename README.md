@@ -31,7 +31,7 @@
 - [Tim Pengembang](#smiley_cat-tim-pengembang) 👨‍💻
 
  ## 📖 Tentang
- Dashboard "Pesona" dibuat untuk mendapatkan informasi wisata yang ada di Jawa Barat dengan 
+ "Pesona Jabar" adalah dashboard interaktif yang membantu Anda menemukan destinasi wisata terbaik di Provinsi Jawa Barat dengan mudah, cepat dan tanpa ribet! ✨
  🎯 Fitur Utama
 ✅ Cari Wisata – Filter dan temukan destinasi wisata berdasarkan kabupaten, kecamatan, tipe wisata, harga tiket, dan rating.
 ✅ Statistik Wisata – Lihat data dan analisis seputar tren wisata di Jawa Barat.
