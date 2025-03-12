@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Blue%20Green%20Minimalist%20Modern%20Travel%20Package%20Presentation.gif?raw=true">
+  <img width="670" height="350" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Blue%20Green%20Minimalist%20Modern%20Travel%20Package%20Presentation.gif?raw=true">
 </p>
 
 <div align="center">
@@ -60,13 +60,13 @@ Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singk
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Cari%20Wisata.png?raw=true">
 </p>
 
-Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel 
+Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel hasil pencarian berupa Nama Wisata, Rating, Harga, Deskripsi , dan Link ke google maps. 
 
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
 </p>
 
-Halaman ketiga terkait dengan statistik wisata yang menampilkan tren dari wisata Jawa Barat
+Halaman ketiga terkait dengan statistik wisata yang menampilkan tren dari wisata Jawa Barat. 
 
 ## 🎬 Demo
 
