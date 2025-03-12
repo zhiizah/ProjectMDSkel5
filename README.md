@@ -173,6 +173,6 @@ select * from Kelurahan
 
 - Frontend Developer: [Syella Zignora Limba](https://github.com/syellazignora16) (G1501231027)
 - Backend Developer: [Siti Nur Azizah](https://github.com/zhiizah) (G1501231058)
-- Technical Writer: [Nabila Syukri](https://github.com/nabilasyukrii) (G1501231073)
+- Technical Writer: [Nabila Syukri](https://github.com/nabilasyukrii) (G1501231086)
 - Database Manager: [Boy Riansyah](https://github.com/boyriansyah) (G1501231055)
 
