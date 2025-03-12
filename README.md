@@ -39,14 +39,11 @@
 
 🚀 **Cara Menggunakan**  
 1️⃣ Buka halaman **Dashboard** untuk melihat rekomendasi wisata terbaik.  
-
 2️⃣ Klik menu **Cari Wisata** untuk mencari tempat yang sesuai dengan preferensimu.  
-
 3️⃣ Jelajahi **Statistik Wisata** untuk memahami tren wisata di Jawa Barat.  
-
 4️⃣ Nikmati perjalananmu dan bagikan pengalaman terbaikmu! 🌟  
 
- ## :📸 Screenshot
+ ## 📸 Screenshot
 
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
@@ -86,7 +83,7 @@ Berisi tentang tabel-tabel yang digunakan berikut dengan sintaks SQL DDL (CREATE
 "Pesona Jabar" menyimpan informasi yang mewakili atribut data yang saling berhubungan untuk kemudian dianalisis.
 
 ### Create Table Kabupaten Kota
-Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kota.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | kode_Kabkot        | character varying(10)  | Kode Kabupaten / kota           |
@@ -107,7 +104,7 @@ select * from Kota
 
 ### Create Table Kecamatan
 
-Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kecamatan.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | kode_Kec           | character varying(10)  | Kode Kecamatan                  |
@@ -127,7 +124,7 @@ select * from Kecamatan
 ```
 ### Create Table Kelurahan
 
-Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel penerbit.
+Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kelurahan.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | kode_Kel           | character varying(10)  | Kode Kelurahan                  |
@@ -146,6 +143,30 @@ CREATE TABLE IF NOT EXISTS Kelurahan (
 select * from Kelurahan
 ```
 ### Create Table Wisata
+Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di Jawa Barat termasuk berdasarkan kabupaten, kecamtan, Kelurahan, Harga, Rating, Alamat, Deskripsi singkat. Berikut deskripsi untuk setiap tabel Wisata.
+| Attribute          | Type                   | Description                     |
+|:-------------------|:-----------------------|:--------------------------------|
+| kode_Kel           | character varying(10)  | Kode Kelurahan                  |
+| Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
+| Nama_Kel           | character varying(100) | Nama Kelurahan                  |
+| Jml_pddk_kel       | character varying(100) | Jumlah penduduk                 |
+
+dengan script SQL sebagai berikut:
+```sql
+CREATE TABLE IF NOT EXISTS Kelurahan (
+    Kode_Wisata VARCHAR(10) PRIMARY KEY,
+    Tipe_isata VARCHAR(100) NOT NULL,
+    Nama_Wisata VARCHAR(100),
+    Kode_Kab int (20),
+    Kode_Kec VARCHAR (20),
+    Kode_Kel VARCHAR (20),
+    Deskripsi VARCHAR (200),
+    Harga_tiket VARCHAR (50),
+    Rating DOUBLE (10), 
+    Alamat VARCHAR (100)
+);
+select * from Wisata
+```
 
 ## 📁 Struktur Folder
 
