@@ -45,3 +45,11 @@ Berikut merupakan link untuk shinnyapps atau dashboard dari project kami:
 https://mdselompok6.shinyapps.io/Dashbordmds6/
 
 
+
+## 👨‍💻 Tim Pengembang
+
+- Frontend Developer: [Syella Zignora Limba](https://github.com/syellazignora16) (G1501231027)
+- Backend Developer: [Siti Nur Azizah](https://github.com/zhiizah) (G1501231058)
+- Technical Writer: [Nabila Syukri](https://github.com/nabilasyukrii) (G1501231073)
+- Database Manager: [Boy Riansyah](https://github.com/boyriansyah) (G1501231055)
+
