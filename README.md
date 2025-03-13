@@ -202,7 +202,7 @@ select * from Wisata
 ## 👨‍💻 Tim Pengembang
 
 <p align="center">
-  <img width="800" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/About%20Our%20Team%20Business%20Presentation%20in%20Black%20and%20White%20Emerald%20Mint%20Green%20Aspirational%20Elegance%20Style.jpg?raw=true ">
+  <img width="780" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/About%20Our%20Team%20Business%20Presentation%20in%20Black%20and%20White%20Emerald%20Mint%20Green%20Aspirational%20Elegance%20Style.jpg?raw=true ">
 </p>
 <p align="center">
 
