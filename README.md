@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="670" height="350" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Blue%20Green%20Minimalist%20Modern%20Travel%20Package%20Presentation.gif?raw=true">
+  <img width="700" height="370" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Blue%20Green%20Minimalist%20Modern%20Travel%20Package%20Presentation.gif?raw=true">
 </p>
 
 <div align="center">
