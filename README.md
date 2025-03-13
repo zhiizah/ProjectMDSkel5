@@ -14,10 +14,10 @@ _Jelajahi indahnya Jawa Barat_
 
 ## Menu
 - [Tentang](#-tentang) 📖
-- [Screenshot](#-screenshot) 📸
 - [Demo](#-demo) 🎬
 - [ERD](#-erd) 📈
 - [Deskripsi Data](#-deskripsi-data) 📋
+- [Screenshot](#-screenshot) 📸
 - [Struktur Folder](#-struktur-folder) 📁
 - [Our Team](#-tim-pengembang) 👨‍💻
 
