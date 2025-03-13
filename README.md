@@ -22,7 +22,6 @@
 - [Tentang](#scroll-tentang) 📖
 - [Screenshot](#rice_scene-screenshot) 📸
 - [Demo](#dvd-demo) 🎬
-- [Dokumentasi](#blue_book-dokumentasi) 📚
 - [ERD](#rotating_light-erd) 📈
 - [Deskripsi Data](#heavy_check_mark-deskripsi-data) 📋
 - [Struktur Folder](#open_file_folder-struktur-folder) 📁
@@ -201,6 +200,13 @@ select * from Wisata
 
 
 ## 👨‍💻 Tim Pengembang
+
+<p align="center">
+  <img width="800" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/About%20Our%20Team%20Business%20Presentation%20in%20Black%20and%20White%20Emerald%20Mint%20Green%20Aspirational%20Elegance%20Style.jpg?raw=true ">
+</p>
+<p align="center">
+
+  
 - Database Manager: [Boy Riansyah](https://github.com/boyriansyah) (M0501241012)
 - Backend Developer: [Syella Zignora Limba](https://github.com/syellazignora16) (M0501241027)
 - Frontend Developer: [Siti Nur Azizah](https://github.com/zhiizah) (M0501241046)
