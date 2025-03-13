@@ -183,3 +183,5 @@ Menu  ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisat
 - Backend Developer: [Syella Zignora Limba](https://github.com/syellazignora16) (M0501241027)
 - Frontend Developer: [Siti Nur Azizah](https://github.com/zhiizah) (M0501241046)
 - Technical Writer: [Nabila Syukri](https://github.com/nabilasyukrii) (M0501241086)
+
+Note: Projek ini merupakan Tugas Praktikum Mata Kuliah Manajemen Data Statistika 
