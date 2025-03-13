@@ -89,7 +89,7 @@ Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota
 | kode_Kabkot        | character varying(10)  | Kode Kabupaten / kota           |
 | nama_Kabkot        | character varying(100) | Nama Kabupaten / Kota           |
 | Ibukota            | character varying(100) | Ibu Kota                        |
-| Jml_pddk_kabkot    | character varying(100) | Jumlah penduduk                 |
+| Jml_pddk_kabkot    | integer                | Jumlah penduduk                 |
 
 dengan script SQL sebagai berikut:
 ```sql
@@ -97,7 +97,8 @@ CREATE TABLE IF NOT EXISTS Kota (
     Kode_Kabkot VARCHAR(10) PRIMARY KEY,
     Nama_Kabkot VARCHAR(100) NOT NULL,
     Ibukota VARCHAR(100),
-    Jml_pddk_kabkot int (20)
+    Jml_pddk_kabkot int,
+PRIMARY KEY (Kode_Kabkot)
 );
 select * from Kota
 ```
@@ -110,7 +111,7 @@ Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang 
 | kode_Kec           | character varying(10)  | Kode Kecamatan                  |
 | Kode_Kabkot        | character varying(10)  | Kode Kabupaten / Kota           |
 | Nama_Kec           | character varying(100) | Nama Kecamatan                  |
-| Jml_pddk_kec       | character varying(100) | Jumlah penduduk                 |
+| Jml_pddk_kec       | integer                | Jumlah penduduk                 |
 
 dengan script SQL sebagai berikut:
 ```sql
@@ -118,7 +119,8 @@ CREATE TABLE IF NOT EXISTS Kecamatan (
     Kode_Kec VARCHAR(10) PRIMARY KEY,
     Kode_Kabkot VARCHAR(100) NOT NULL,
     Nama_Kec VARCHAR(100),
-    Jml_pddk_kec int (20)
+    Jml_pddk_kec int (20),
+PRIMARY KEY (Kode_Kec)
 );
 select * from Kecamatan
 ```
@@ -130,7 +132,7 @@ Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang a
 | kode_Kel           | character varying(10)  | Kode Kelurahan                  |
 | Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
 | Nama_Kel           | character varying(100) | Nama Kelurahan                  |
-| Jml_pddk_kel       | character varying(100) | Jumlah penduduk                 |
+| Jml_pddk_kel       | integer                | Jumlah penduduk                 |
 
 dengan script SQL sebagai berikut:
 ```sql
@@ -138,7 +140,8 @@ CREATE TABLE IF NOT EXISTS Kelurahan (
     Kode_Kel VARCHAR(10) PRIMARY KEY,
     Kode_Kec VARCHAR(100) NOT NULL,
     Nama_Kel VARCHAR(100),
-    Jml_pddk_kelc int (20)
+    Jml_pddk_kelc int,
+PRIMARY KEY (Kode_Kel)
 );
 select * from Kelurahan
 ```
@@ -149,7 +152,7 @@ Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di
 | kode_Kel           | character varying(10)  | Kode Kelurahan                  |
 | Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
 | Nama_Kel           | character varying(100) | Nama Kelurahan                  |
-| Jml_pddk_kel       | character varying(100) | Jumlah penduduk                 |
+| Jml_pddk_kel       | integer                | Jumlah penduduk                 |
 
 dengan script SQL sebagai berikut:
 ```sql
@@ -161,9 +164,13 @@ CREATE TABLE IF NOT EXISTS Kelurahan (
     Kode_Kec VARCHAR (20),
     Kode_Kel VARCHAR (20),
     Deskripsi VARCHAR (200),
-    Harga_tiket VARCHAR (50),
-    Rating DOUBLE (10), 
-    Alamat VARCHAR (100)
+    Harga_tiket numeric,
+    Rating numeric, 
+    Alamat VARCHAR (100),
+    PRIMARY KEY (Kode_Wisata)
+    FOREIGN KEY (Kode_Kabkot) REFERENCES Kota (Kode_Kabkot),
+    FOREIGN KEY (Kode_Kec) REFERENCES Kecamatan (Kode_Kec),
+    FOREIGN KEY (Kode_Kel) REFERENCES Kelurahan (Kode_Kel)
 );
 select * from Wisata
 ```
