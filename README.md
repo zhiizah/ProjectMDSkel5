@@ -15,8 +15,8 @@ _Jelajahi indahnya Jawa Barat_
 ## Menu
 - [Tentang](#-tentang) 📖
 - [Demo](#-demo) 🎬
-- [ERD](#-erd) 📈
 - [Deskripsi Data](#-deskripsi-data) 📋
+- [ERD](#-erd) 📈
 - [Implementasi R](#-implementasi-r)📝
 - [Screenshot](#-screenshot) 📸
 - [Struktur Folder](#-struktur-folder) 📁
@@ -42,14 +42,7 @@ _Jelajahi indahnya Jawa Barat_
 Berikut merupakan link untuk shinnyapps atau dashboard dari project kami:
 [Open in browser](http://127.0.0.1:7341/)
 
-## 💾 ERD
-Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan atribut. Pada project ini, pada entitas Wisata terdapat 3 atribut yang berhubungan dengan entitas lain yaitu kode_kabkot yang memiliki hubungan ke entitas Kota, kode_kec berhubungan dengan entitas Kecamatan, Kodel_kel memiliki hubungan dengan entitas Kelurahan dengan masing-masing hubungan One-to-Many. 
-
-<p align="center">
-  <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
-</p>
-
-## 📋 Deskripsi Database
+## 📋 Deskripsi Data
 Database "Pesona Jabar" terdiri dari empat entitas atau tabel utama yaitu Kota, Kecamatan, Kelurahan dan Wisata dengan masing-masing entity memiliki atribut sebagai berikut :
 | Entity             | Atribut                | 
 |:-------------------|:-----------------------|
@@ -103,6 +96,13 @@ Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di
 | Harga_tiket        | numeric                | Harga Tiket                     |
 | Rating             | numeric                | Rating                          |
 | Alamat             | character varying(50)  | Alamat                          |
+
+## 💾 ERD
+Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan atribut. Pada project ini, pada entitas Wisata terdapat 3 atribut yang berhubungan dengan entitas lain yaitu kode_kabkot yang memiliki hubungan ke entitas Kota, kode_kec berhubungan dengan entitas Kecamatan, Kodel_kel memiliki hubungan dengan entitas Kelurahan dengan masing-masing hubungan One-to-Many. 
+
+<p align="center">
+  <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
+</p>
 
 ## 📝 Implementasi R 
 Database diberi nama **pariwisataok_db** kemudian dikelola dengan aplikasi R yang dikoneksikan ke MySQL melalu paket `DBI` dan `RMySQL`. Berikut adalah kode untuk koneksi ke database
