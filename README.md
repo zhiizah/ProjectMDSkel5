@@ -70,13 +70,41 @@ Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan at
 
 ## 📋 Deskripsi Data
 
-Berisi tentang tabel-tabel yang digunakan berikut dengan sintaks SQL DDL (CREATE).
+Database "Pesona Jabar" terdiri dari empat entitas atau tabel utama yaitu Kota, Kecamatan, Kelurahan dan Wisata yang diberi nama **pariwisataok_db**. 
 
-### Create Database
-"Pesona Jabar" menyimpan informasi yang mewakili atribut data yang saling berhubungan untuk kemudian dianalisis.
+Database dibuat dan dikelola dengan aplikasi R yang dikoneksikan ke MySQL melalu paket `DBI` dan `RMySQL`. Berikut adalah kode untuk koneksi ke database
 
-### Create Table Kabupaten Kota
-Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kota.
+```sql
+con <- dbConnect(
+  MySQL(),
+  host = "127.0.0.1",
+  port = 3306
+  user = "root",
+  password = "",
+  dbname = "pariwisataok_db"
+```
+Selanjutnya load dataset berdasarkan lokasi file. Dataset tersedia pada folder [Data](https://github.com/zhiizah/ProjectMDSkel5/tree/main/data). Kemudian mengisi database dengan `dbWriteTable` seperti di bawah ini
+
+```sql
+dbWriteTable(con, "kabupaten", kabupaten, overwrite = TRUE)
+dbWriteTable(con, "kecamatan", kecamatan, overwrite = TRUE)
+dbWriteTable(con, "kelurahan", kelurahan, overwrite = TRUE)
+dbWriteTable(con, "wisata", wisata, overwrite = TRUE)
+```
+
+_Note:_ Sintaks lengkap dapat dilihat pada file [Projek MDS UTS.qmd](https://github.com/zhiizah/ProjectMDSkel5/blob/main/kodingan/Project%20MDS%20UTS.qmd) 
+
+| Entity             | Atribut                | 
+|:-------------------|:-----------------------|
+| Kota               | Kode_Kabkot , Nama_Kabkot, Jml_pddk_kabkot  |        
+| Kecamatan          | Kode_Kec , Nama_Kec, Kode_Kabkot, Jml_pddk_kec        | 
+| Kelurahan          | Kode_Kel , Nama_Kel, Kode_Kec, Jml_pddk_kec        | 
+| Wisata             | Kode_Wisata, Nama_Wisata, Tipe_Wisata, Kode_Kec , Kode_Kel, Kode_Kabkot, Rating, Harga, Alamat, Deskripsi        | 
+    
+Berikut pendefinisian masing-masing entity 
+
+### Table Kota
+Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk. Berikut deskripsi untuk setiap tabel Kota.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | Kode_Kabkot        | character varying(10)  | Kode Kabupaten / kota           |
@@ -84,19 +112,8 @@ Table Kabupaten memberikan informasi kepada user terkait dengan kabupaten / kota
 | Ibukota            | character varying(100) | Ibu Kota                        |
 | Jml_pddk_kabkot    | integer                | Jumlah penduduk                 |
 
-dengan script SQL sebagai berikut:
-```sql
-CREATE TABLE IF NOT EXISTS Kota (
-    Kode_Kabkot VARCHAR(10) PRIMARY KEY,
-    Nama_Kabkot VARCHAR(100) NOT NULL,
-    Ibukota VARCHAR(100),
-    Jml_pddk_kabkot int
-);
-select * from Kota
-```
 
-### Create Table Kecamatan
-
+### Table Kecamatan
 Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kecamatan.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
@@ -105,19 +122,9 @@ Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang 
 | Nama_Kec           | character varying(100) | Nama Kecamatan                  |
 | Jml_pddk_kec       | integer                | Jumlah penduduk                 |
 
-dengan script SQL sebagai berikut:
-```sql
-CREATE TABLE IF NOT EXISTS Kecamatan (
-    Kode_Kec VARCHAR(10) PRIMARY KEY,
-    Kode_Kabkot VARCHAR(100) NOT NULL,
-    Nama_Kec VARCHAR(100),
-    Jml_pddk_kec int,
-);
-select * from Kecamatan
-```
-### Create Table Kelurahan
-
+### Table Kelurahan
 Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kelurahan.
+
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | kode_Kel           | character varying(10)  | Kode Kelurahan                  |
@@ -125,17 +132,7 @@ Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang a
 | Nama_Kel           | character varying(100) | Nama Kelurahan                  |
 | Jml_pddk_kel       | integer                | Jumlah penduduk                 |
 
-dengan script SQL sebagai berikut:
-```sql
-CREATE TABLE IF NOT EXISTS Kelurahan (
-    Kode_Kel VARCHAR(10) PRIMARY KEY,
-    Kode_Kec VARCHAR(100) NOT NULL,
-    Nama_Kel VARCHAR(100),
-    Jml_pddk_kelc int
-);
-select * from Kelurahan
-```
-### Create Table Wisata
+### Table Wisata
 Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di Jawa Barat termasuk berdasarkan kabupaten, kecamtan, Kelurahan, Harga, Rating, Alamat, Deskripsi singkat. Berikut deskripsi untuk setiap tabel Wisata.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
@@ -150,26 +147,6 @@ Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di
 | Rating             | numeric                | Rating                          |
 | Alamat             | character varying(50)  | Alamat                          |
 
-dengan script SQL sebagai berikut:
-```sql
-CREATE TABLE IF NOT EXISTS Kelurahan (
-    Kode_Wisata VARCHAR(10) PRIMARY KEY,
-    Tipe_Wisata VARCHAR(50) NOT NULL,
-    Nama_Wisata VARCHAR(50),
-    Kode_Kab int (20),
-    Kode_Kec VARCHAR (20),
-    Kode_Kel VARCHAR (20),
-    Deskripsi VARCHAR (200),
-    Harga_tiket numeric,
-    Rating numeric, 
-    Alamat VARCHAR (100),
-    PRIMARY KEY (Kode_Wisata),
-    FOREIGN KEY (Kode_Kabkot) REFERENCES Kota (Kode_Kabkot),
-    FOREIGN KEY (Kode_Kec) REFERENCES Kecamatan (Kode_Kec),
-    FOREIGN KEY (Kode_Kel) REFERENCES Kelurahan (Kode_Kel)
-);
-select * from Wisata
-```
 
 ## 📁 Struktur Folder
 
@@ -178,9 +155,9 @@ select * from Wisata
 ├── kodingan           # ShinyApps
 │   ├── css
 │   │   ├── **/*.css
-│   ├── Frontend.R
-│   └── Backend.R
-│   └── Project MDS UTS.R   #database connection
+│   ├── Frontend.Rmd
+│   └── Backend.Rmd
+│   └── Project MDS UTS.qmd   #database connection
 ├── data 
 │   ├── csv
 │   │   ├── **/*.css
