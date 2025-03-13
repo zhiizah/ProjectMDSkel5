@@ -26,7 +26,7 @@ _Jelajahi indahnya Jawa Barat_
 "Pesona Jabar" adalah dashboard interaktif yang membantu Anda menemukan destinasi wisata terbaik di Provinsi Jawa Barat dengan mudah, cepat, dan tanpa ribet! ✨  
 
 🎯 **Fitur Utama**  
-✅ **Cari Wisata** – Filter dan temukan destinasi wisata berdasarkan kabupaten, kecamatan, tipe wisata, harga tiket, dan rating.  
+✅ **Cari Wisata** – Filter dan temukan destinasi wisata berdasarkan kabupaten/kota dan tipe wisata.
 ✅ **Statistik Wisata** – Lihat data dan analisis seputar tren wisata di Jawa Barat.  
 ✅ **Rekomendasi Terbaik** – Dapatkan rekomendasi wisata dengan rating tertinggi yang wajib dikunjungi.  
 
