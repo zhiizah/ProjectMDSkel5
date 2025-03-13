@@ -57,9 +57,9 @@ Berikut adalah pendefinisian dari masing-masing tabel atau entity
 Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk. Berikut deskripsi untuk setiap tabel Kota.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
-| Kode_Kabkot        | character varying(10)  | Kode Kabupaten / kota           |
-| Nama_Kabkot        | character varying(100) | Nama Kabupaten / Kota           |
-| Ibukota            | character varying(100) | Ibu Kota                        |
+| Kode_Kabkot        | character varying(50)  | Kode Kabupaten / kota           |
+| Nama_Kabkot        | character varying(50) | Nama Kabupaten / Kota           |
+| Ibukota            | character varying(50) | Ibu Kota                        |
 | Jml_pddk_kabkot    | integer                | Jumlah penduduk                 |
 
 
@@ -67,9 +67,9 @@ Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang
 Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kecamatan.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
-| Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
-| Kode_Kabkot        | character varying(10)  | Kode Kabupaten / Kota           |
-| Nama_Kec           | character varying(100) | Nama Kecamatan                  |
+| Kode_Kec           | character varying(50)  | Kode Kecamatan                  |
+| Kode_Kabkot        | character varying(50)  | Kode Kabupaten / Kota           |
+| Nama_Kec           | character varying(50) | Nama Kecamatan                  |
 | Jml_pddk_kec       | integer                | Jumlah penduduk                 |
 
 ### Table Kelurahan
@@ -77,28 +77,29 @@ Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang a
 
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
-| kode_Kel           | character varying(10)  | Kode Kelurahan                  |
-| Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
-| Nama_Kel           | character varying(100) | Nama Kelurahan                  |
+| kode_Kel           | character varying(50)  | Kode Kelurahan                  |
+| Kode_Kec           | character varying(50)  | Kode Kecamatan                  |
+| Nama_Kel           | character varying(50) | Nama Kelurahan                  |
 | Jml_pddk_kel       | integer                | Jumlah penduduk                 |
 
 ### Table Wisata
 Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di Jawa Barat termasuk berdasarkan kabupaten, kecamtan, Kelurahan, Harga, Rating, Alamat, Deskripsi singkat. Berikut deskripsi untuk setiap tabel Wisata.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
-| Kode_Wisata        | character varying(10)  | Kode Wisata                     |
+| Kode_Wisata        | character varying(50)  | Kode Wisata                     |
 | Nama_Wisata        | character varying(50)  | Nama Wisata                     |  
 | Tipe_Wisata        | character varying(50)  | Tipe Wisata                     |
-| kode_Kab           | character varying(10)  | Kode Kebupaten                  |
-| Kode_Kec           | character varying(10)  | Kode Kecamatan                  |
-| Kode_Kel           | character varying(10)  | Nama Kelurahan                  |
+| kode_Kab           | character varying(50)  | Kode Kebupaten                  |
+| Kode_Kec           | character varying(50)  | Kode Kecamatan                  |
+| Kode_Kel           | character varying(50)  | Nama Kelurahan                  |
 | Deskripsi          | character varying(200) | Deskripsi                       |
 | Harga_tiket        | numeric                | Harga Tiket                     |
 | Rating             | numeric                | Rating                          |
 | Alamat             | character varying(50)  | Alamat                          |
 
 ## 💾 ERD
-Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan atribut. Pada project ini, pada entitas Wisata terdapat 3 atribut yang berhubungan dengan entitas lain yaitu kode_kabkot yang memiliki hubungan ke entitas Kota, kode_kec berhubungan dengan entitas Kecamatan, Kodel_kel memiliki hubungan dengan entitas Kelurahan dengan masing-masing hubungan One-to-Many. 
+Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dalam database "Pesona Jabar". ERD ini menunjukkan struktur database dengan hubungan hierarkis dari Kota → Kecamatan → Kelurahan → Wisata.
+Semua relasi yang digunakan adalah _One-to-Many_ karena satu kota memiliki banyak kecamatan, satu kecamatan memiliki banyak kelurahan, dan satu kelurahan memiliki banyak wisata.
 
 <p align="center">
   <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
