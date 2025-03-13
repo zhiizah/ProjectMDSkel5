@@ -49,7 +49,7 @@
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
 </p>
 
-Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard, selain itu ada tampilan Top 4 Rank wisata di Jawa Barat
+Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard, selain itu ada tampilan Top 4 Rank wisata di Jawa Barat.
 
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Cari%20Wisata.png?raw=true">
@@ -61,7 +61,7 @@ Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kab
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
 </p>
 
-Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. 
+Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. Anda bisa melihat distribusi tarif wisata disetiap kabupaten/kita berdasarkan kategori berbayar atau gratis.
 
 ## 🎬 Demo
 
@@ -191,8 +191,7 @@ select * from Wisata
 
 
 ## 👨‍💻 Tim Pengembang
+- Database Manager: [Boy Riansyah](https://github.com/boyriansyah) (M0501241012)
 - Backend Developer: [Syella Zignora Limba](https://github.com/syellazignora16) (M0501241027)
 - Frontend Developer: [Siti Nur Azizah](https://github.com/zhiizah) (M0501241046)
 - Technical Writer: [Nabila Syukri](https://github.com/nabilasyukrii) (M0501241086)
-- Database Manager: [Boy Riansyah](https://github.com/boyriansyah) (M0501241012)
-
