@@ -28,7 +28,6 @@ _"Jelajahi Keindahan, Rasakan Keunikan, Temukan Cerita di Setiap Sudut Jawa Bara
 
 🎯 **Fitur Utama**  
 ✅ **Cari Wisata** – Filter dan temukan destinasi wisata berdasarkan kabupaten/kota dan tipe wisata.
-
 ✅ **Statistik Wisata** – Lihat data dan analisis seputar tren wisata di Jawa Barat.  
 ✅ **Rekomendasi Terbaik** – Dapatkan rekomendasi wisata dengan rating tertinggi yang wajib dikunjungi.  
 
