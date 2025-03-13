@@ -127,25 +127,28 @@ dbWriteTable(con, "wisata", wisata, overwrite = TRUE)
 
 _Note:_ Sintaks lengkap dapat dilihat pada file [Projek MDS UTS.qmd](https://github.com/zhiizah/ProjectMDSkel5/blob/main/kodingan/Project%20MDS%20UTS.qmd) 
 
-## 📸 Screenshot Dashboard
+## 📸 Screenshot
 
+**🏠 Dashboard**
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
 </p>
 
-Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard, selain itu ada tampilan Top 4 Rank wisata di Jawa Barat.
+Menu bar pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard dan juga Rekomendasi wisata terbaik buat kamu berdasarkan Top 4 Ranking.
 
+**🔍 Cari Wisata**
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Cari%20Wisata.png?raw=true">
 </p>
 
-Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel hasil pencarian berupa Nama Wisata, Rating, Harga, Deskripsi , dan Link ke google maps. 
+Menu kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel hasil pencarian berupa Nama Wisata, Rating, Harga, Deskripsi , dan Link ke google maps. 
 
+**📊 Statistik Wisata**
 <p align="center">
   <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
 </p>
 
-Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. Anda bisa melihat distribusi tarif wisata disetiap kabupaten/kita berdasarkan kategori berbayar atau gratis.
+Menu  ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. Anda bisa melihat distribusi tarif wisata disetiap kabupaten/kita berdasarkan kategori berbayar atau gratis.
 
 
 ## 📁 Struktur Folder
