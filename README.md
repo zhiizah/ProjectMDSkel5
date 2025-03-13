@@ -175,18 +175,16 @@ select * from Wisata
 
 ```
 .
-├── app           # ShinyApps
+├── kodingan           # ShinyApps
 │   ├── css
 │   │   ├── **/*.css
 │   ├── Frontend.R
 │   └── Backend.R
+│   └── Project MDS UTS.R   #database connection
 ├── data 
 │   ├── csv
 │   │   ├── **/*.css
-│   └── sql
-|       └── db.sql
-├── src           # Project source code
-├── doc           # Doc for the project
+├── image           # Project image
 ├── .gitignore
 ├── LICENSE
 └── README.md
