@@ -54,7 +54,7 @@ Database "Pesona Jabar" terdiri dari empat entitas atau tabel utama yaitu Kota, 
 Berikut adalah pendefinisian dari masing-masing tabel atau entity
 
 ### Table Kota
-Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk. Berikut deskripsi untuk setiap tabel Kota.
+Table Kota memberikan informasi terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten, nama ibukota kabupaten, dan jumlah penduduk setiap kabupaten. Berikut deskripsi untuk setiap tabel Kota.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | Kode_Kabkot        | character varying(50)  | Kode Kabupaten / kota           |
@@ -64,7 +64,7 @@ Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang
 
 
 ### Table Kecamatan
-Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kecamatan.
+Table Kecamatan  memberikan informasi terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamatan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk setiap kecamatan.  Berikut deskripsi untuk setiap tabel Kecamatan.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | Kode_Kec           | character varying(50)  | Kode Kecamatan                  |
@@ -73,7 +73,7 @@ Table Kecamatan  memberikan informasi kepada user terkait dengan Kecamatan yang 
 | Jml_pddk_kec       | integer                | Jumlah penduduk                 |
 
 ### Table Kelurahan
-Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang ada di Jawa Barat termasuk kode kecamtan, Nama kecamatan, terletak di kabupaten apa dan jumlah penduduk  Berikut deskripsi untuk setiap tabel Kelurahan.
+Table Kelurahan memberikan informasi terkait dengan Kelurahan yang ada di Jawa Barat termasuk kode kelurahan, kode kecamatan, Nama kelurahan, dan jumlah penduduk setiap kelurahan. Berikut deskripsi untuk setiap tabel Kelurahan.
 
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
@@ -83,7 +83,7 @@ Table Kelurahan memberikan informasi kepada user terkait dengan Kecamatan yang a
 | Jml_pddk_kel       | integer                | Jumlah penduduk                 |
 
 ### Table Wisata
-Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di Jawa Barat termasuk berdasarkan kabupaten, kecamtan, Kelurahan, Harga, Rating, Alamat, Deskripsi singkat. Berikut deskripsi untuk setiap tabel Wisata.
+Table Wisata  memberikan informasi terkait dengan Wisata yang ada di Jawa Barat termasuk berdasarkan kabupaten, kecamatan, Kelurahan, Harga, Rating, Alamat, Deskripsi singkat tentang wisata. Berikut deskripsi untuk setiap tabel Wisata.
 | Attribute          | Type                   | Description                     |
 |:-------------------|:-----------------------|:--------------------------------|
 | Kode_Wisata        | character varying(50)  | Kode Wisata                     |
