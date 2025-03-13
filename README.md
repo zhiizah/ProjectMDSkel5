@@ -117,7 +117,7 @@ con <- dbConnect(
   password = "",
   dbname = "pariwisataok_db"
 ```
-Selanjutnya load dataset berdasarkan lokasi file. Dataset tersedia pada folder [Data](https://github.com/zhiizah/ProjectMDSkel5/tree/main/data). Kemudian mengisi database dengan `dbWriteTable` seperti di bawah ini
+Selanjutnya membuat dataframe di R berdasarkan lokasi file. Kemudian gunakan kode  `dbWriteTable()` untuk memasukkan data dari dataframe  ke dalam database. Berikut kode R :
 
 ```sql
 dbWriteTable(con, "kabupaten", kabupaten, overwrite = TRUE)
@@ -125,6 +125,7 @@ dbWriteTable(con, "kecamatan", kecamatan, overwrite = TRUE)
 dbWriteTable(con, "kelurahan", kelurahan, overwrite = TRUE)
 dbWriteTable(con, "wisata", wisata, overwrite = TRUE)
 ```
+Dataset tersedia pada folder [Data](https://github.com/zhiizah/ProjectMDSkel5/tree/main/data). 
 
 _Note:_ Sintaks lengkap dapat dilihat pada file [Projek MDS UTS.qmd](https://github.com/zhiizah/ProjectMDSkel5/blob/main/kodingan/Project%20MDS%20UTS.qmd) 
 
