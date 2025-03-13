@@ -158,17 +158,19 @@ Menu  ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisat
 ```
 .
 ├── kodingan           # ShinyApps
-│   ├── css
-│   │   ├── **/*.css
 │   ├── Frontend.Rmd
 │   └── Backend.Rmd
 │   └── Project MDS UTS.qmd   #database connection
 ├── data 
-│   ├── csv
-│   │   ├── **/*.css
+│   ├── Kabupaten.csv
+│   ├── Kecamatan.csv
+│   ├── Kelurahan.csv
+│   ├── Wisata.csv
 ├── image           # Project image
+│   ├── ERD
+│   ├── Foto Tim
+│   ├── Foto Lainnya
 ├── .gitignore
-├── LICENSE
 └── README.md
 ```
 
