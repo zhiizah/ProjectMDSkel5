@@ -14,12 +14,12 @@ _Jelajahi indahnya Jawa Barat_
 
 ## Menu
 - [Tentang](#-tentang) 📖
-- [Screenshot](#rice_scene-screenshot) 📸
+- [Screenshot](#-screenshot) 📸
 - [Demo](#-demo) 🎬
-- [ERD](#rotating_light-erd) 📈
-- [Deskripsi Data](#heavy_check_mark-deskripsi-data) 📋
-- [Struktur Folder](#open_file_folder-struktur-folder) 📁
-- [Our Team](#smiley_cat-tim-pengembang) 👨‍💻
+- [ERD](#-erd) 📈
+- [Deskripsi Data](#-deskripsi-data) 📋
+- [Struktur Folder](#-struktur-folder) 📁
+- [Our Team](#-tim-pengembang) 👨‍💻
 
  ## 📖 **Tentang**  
 
