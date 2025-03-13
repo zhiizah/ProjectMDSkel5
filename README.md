@@ -13,9 +13,9 @@ _Jelajahi indahnya Jawa Barat_
 </div>
 
 ## Menu
-- [Tentang](#tentang) 📖
+- [Tentang](#-tentang) 📖
 - [Screenshot](#rice_scene-screenshot) 📸
-- [Demo](#dvd-demo) 🎬
+- [Demo](#-demo) 🎬
 - [ERD](#rotating_light-erd) 📈
 - [Deskripsi Data](#heavy_check_mark-deskripsi-data) 📋
 - [Struktur Folder](#open_file_folder-struktur-folder) 📁
