@@ -8,18 +8,12 @@
   
 # PESONA JABAR
 
-[Tentang](#scroll-tentang)
-•
-[Screenshot](#rice_scene-screenshot)
-•
-[Demo](#dvd-demo)
-•
-[Dokumentasi](#blue_book-dokumentasi)
+_Jelajahi indahnya Jawa Barat_
   
 </div>
 
 ## Menu
-- [Tentang](#scroll-tentang) 📖
+- [Tentang](#tentang) 📖
 - [Screenshot](#rice_scene-screenshot) 📸
 - [Demo](#dvd-demo) 🎬
 - [ERD](#rotating_light-erd) 📈
