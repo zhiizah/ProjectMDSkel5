@@ -17,6 +17,7 @@ _Jelajahi indahnya Jawa Barat_
 - [Demo](#-demo) 🎬
 - [ERD](#-erd) 📈
 - [Deskripsi Data](#-deskripsi-data) 📋
+- [Implementasi R](#-implementasi-r)📝
 - [Screenshot](#-screenshot) 📸
 - [Struktur Folder](#-struktur-folder) 📁
 - [Our Team](#-tim-pengembang) 👨‍💻
@@ -36,26 +37,6 @@ _Jelajahi indahnya Jawa Barat_
 3️⃣ Jelajahi **Statistik Wisata** untuk memahami tren wisata di Jawa Barat.  
 4️⃣ Nikmati perjalananmu dan bagikan pengalaman terbaikmu! 🌟  
 
- ## 📸 Screenshot
-
-<p align="center">
-  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
-</p>
-
-Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard, selain itu ada tampilan Top 4 Rank wisata di Jawa Barat.
-
-<p align="center">
-  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Cari%20Wisata.png?raw=true">
-</p>
-
-Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel hasil pencarian berupa Nama Wisata, Rating, Harga, Deskripsi , dan Link ke google maps. 
-
-<p align="center">
-  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
-</p>
-
-Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. Anda bisa melihat distribusi tarif wisata disetiap kabupaten/kita berdasarkan kategori berbayar atau gratis.
-
 ## 🎬 Demo
 
 Berikut merupakan link untuk shinnyapps atau dashboard dari project kami:
@@ -68,40 +49,16 @@ Entitiy Relationship Diagram (ERD) menampilkan hubungan antara entitas dengan at
   <img width="600" height="400" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/ERD.drawio.png?raw=true">
 </p>
 
-## 📋 Deskripsi Data
-
-Database "Pesona Jabar" terdiri dari empat entitas atau tabel utama yaitu Kota, Kecamatan, Kelurahan dan Wisata yang diberi nama **pariwisataok_db**. 
-
-Database dibuat dan dikelola dengan aplikasi R yang dikoneksikan ke MySQL melalu paket `DBI` dan `RMySQL`. Berikut adalah kode untuk koneksi ke database
-
-```sql
-con <- dbConnect(
-  MySQL(),
-  host = "127.0.0.1",
-  port = 3306
-  user = "root",
-  password = "",
-  dbname = "pariwisataok_db"
-```
-Selanjutnya load dataset berdasarkan lokasi file. Dataset tersedia pada folder [Data](https://github.com/zhiizah/ProjectMDSkel5/tree/main/data). Kemudian mengisi database dengan `dbWriteTable` seperti di bawah ini
-
-```sql
-dbWriteTable(con, "kabupaten", kabupaten, overwrite = TRUE)
-dbWriteTable(con, "kecamatan", kecamatan, overwrite = TRUE)
-dbWriteTable(con, "kelurahan", kelurahan, overwrite = TRUE)
-dbWriteTable(con, "wisata", wisata, overwrite = TRUE)
-```
-
-_Note:_ Sintaks lengkap dapat dilihat pada file [Projek MDS UTS.qmd](https://github.com/zhiizah/ProjectMDSkel5/blob/main/kodingan/Project%20MDS%20UTS.qmd) 
-
+## 📋 Deskripsi Database
+Database "Pesona Jabar" terdiri dari empat entitas atau tabel utama yaitu Kota, Kecamatan, Kelurahan dan Wisata dengan masing-masing entity memiliki atribut sebagai berikut :
 | Entity             | Atribut                | 
 |:-------------------|:-----------------------|
 | Kota               | Kode_Kabkot , Nama_Kabkot, Jml_pddk_kabkot  |        
 | Kecamatan          | Kode_Kec , Nama_Kec, Kode_Kabkot, Jml_pddk_kec        | 
 | Kelurahan          | Kode_Kel , Nama_Kel, Kode_Kec, Jml_pddk_kec        | 
 | Wisata             | Kode_Wisata, Nama_Wisata, Tipe_Wisata, Kode_Kec , Kode_Kel, Kode_Kabkot, Rating, Harga, Alamat, Deskripsi        | 
-    
-Berikut pendefinisian masing-masing entity 
+
+Berikut adalah pendefinisian dari masing-masing tabel atau entity
 
 ### Table Kota
 Table Kota memberikan informasi kepada user terkait dengan kabupaten / kota yang ada di Jawa Barat termasuk kode kabupaten, nama kabupaten dan jumlah penduduk. Berikut deskripsi untuk setiap tabel Kota.
@@ -146,6 +103,49 @@ Table Wisata  memberikan informasi kepada user terkait dengan Wisata yang ada di
 | Harga_tiket        | numeric                | Harga Tiket                     |
 | Rating             | numeric                | Rating                          |
 | Alamat             | character varying(50)  | Alamat                          |
+
+## 📝 Implementasi R 
+Database diberi nama **pariwisataok_db** kemudian dikelola dengan aplikasi R yang dikoneksikan ke MySQL melalu paket `DBI` dan `RMySQL`. Berikut adalah kode untuk koneksi ke database
+
+```sql
+con <- dbConnect(
+  MySQL(),
+  host = "127.0.0.1",
+  port = 3306
+  user = "root",
+  password = "",
+  dbname = "pariwisataok_db"
+```
+Selanjutnya load dataset berdasarkan lokasi file. Dataset tersedia pada folder [Data](https://github.com/zhiizah/ProjectMDSkel5/tree/main/data). Kemudian mengisi database dengan `dbWriteTable` seperti di bawah ini
+
+```sql
+dbWriteTable(con, "kabupaten", kabupaten, overwrite = TRUE)
+dbWriteTable(con, "kecamatan", kecamatan, overwrite = TRUE)
+dbWriteTable(con, "kelurahan", kelurahan, overwrite = TRUE)
+dbWriteTable(con, "wisata", wisata, overwrite = TRUE)
+```
+
+_Note:_ Sintaks lengkap dapat dilihat pada file [Projek MDS UTS.qmd](https://github.com/zhiizah/ProjectMDSkel5/blob/main/kodingan/Project%20MDS%20UTS.qmd) 
+
+## 📸 Screenshot Dashboard
+
+<p align="center">
+  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Dashboard.png?raw=true">
+</p>
+
+Halaman pertama pada dashboard menampilkan "tentang" yang berisi deskripsi singkat terkait dengan dashboard, selain itu ada tampilan Top 4 Rank wisata di Jawa Barat.
+
+<p align="center">
+  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Cari%20Wisata.png?raw=true">
+</p>
+
+Halaman kedua merupakan fitur untuk mencari wisata dengan memasukkan pilihan Kabupaten/Kota yang ingin kamu cari lalu memilih jenis wisata sehingga menampilkan tabel hasil pencarian berupa Nama Wisata, Rating, Harga, Deskripsi , dan Link ke google maps. 
+
+<p align="center">
+  <img width="900" height="420" src="https://github.com/zhiizah/ProjectMDSkel5/blob/main/Images/Statistik%20Wisata.png?raw=true">
+</p>
+
+Halaman ketiga terkait dengan statistik wisata yang menampilkan tren seputar wisata Jawa Barat. Anda bisa melihat distribusi tarif wisata disetiap kabupaten/kita berdasarkan kategori berbayar atau gratis.
 
 
 ## 📁 Struktur Folder
